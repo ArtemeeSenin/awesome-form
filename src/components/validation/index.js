@@ -15,3 +15,14 @@ export const matchesPassword = (value, allValues) =>
     value === allValues.password
         ? undefined
         : 'Passwords must match'
+
+export const asyncValidate = async values => {
+    const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+    await sleep(1000);
+    const takenLogins = ['kent', 'andy', 'john', 'joel']; // Must come from API
+        if(takenLogins.includes(values.username)){
+        return Promise.reject({
+            username: 'Wrong Username'
+        })
+    }
+}
