@@ -1,5 +1,6 @@
 import React from 'react'
 import cx from 'classnames'
+import { Field } from 'redux-form'
 
 const getValidityClassName = meta => {
     if(meta.asyncValidating) return 'async-validating'
@@ -22,6 +23,7 @@ export const customInput = props => {
             <label>{ props.label }</label>
             <input {...props.input}
                 type={props.type}
+                autoFocus={props.autoFucus}
             />
             {(meta.error && meta.touched && !meta.active) && (
                 <div className="feedback-text error-text">{meta.error}</div>
@@ -42,3 +44,29 @@ export const customSelect = props => {
         </div>
     )
 }
+
+export const discounts = ( {fields }) => (
+    <div className="custom-field-array-container">
+        {fields.map((code, index) => (
+            <div key={index} className="field-array-item">
+                <Field
+                    name={code}
+                    type="text"
+                    component={customInput}
+                    label={`Discount Code #${index + 1}`}
+                    autoFocus
+                />
+                <button 
+                    type="button" 
+                    onClick={() => fields.remove(index)}
+                >&times;
+                </button>
+            </div>
+        ))}
+        <button
+            type="button"
+            onClick={() => fields.push()}
+        >Add {!fields.length ? 'Dicsount code(s)' : 'Another'}
+        </button>
+    </div>
+)
