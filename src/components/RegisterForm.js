@@ -9,6 +9,7 @@ import {
     asyncValidate
 } from './validation'
 import './RegisterForm.css'
+import capitalize from 'capitalize'
 
 class RegisterForm extends Component {
     render() {
@@ -21,6 +22,7 @@ class RegisterForm extends Component {
                     type="text"
                     label="First Name"
                     validate={[required]}
+                    normalize={capitalize}
                 />
                 <Field
                     name="surname"
@@ -28,6 +30,7 @@ class RegisterForm extends Component {
                     type="text"
                     label="Surname"
                     validate={[required]}
+                    normalize={capitalize}
                 />
                 <Field
                     name="username"
