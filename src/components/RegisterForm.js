@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { customInput, customSelect } from './fields'
+import { validate } from './validation'
 
 class RegisterForm extends Component {
     render() {
@@ -43,6 +44,7 @@ class RegisterForm extends Component {
 }
 
 RegisterForm = reduxForm({
-    form: 'register'
+    form: 'register',
+    validate
 })(RegisterForm);
 export default RegisterForm;
