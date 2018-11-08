@@ -22,7 +22,7 @@ export const customInput = props => {
             <input {...props.input}
                 type={props.type}
             />
-            {(meta.error && meta.touched) && (
+            {(meta.error && meta.touched && !meta.active) && (
                 <div className="feedback-text error-text">{meta.error}</div>
             )}
         </div>
