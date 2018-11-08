@@ -1,35 +1,41 @@
 import React, { Component } from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { customInput, customSelect } from './fields'
 
 class RegisterForm extends Component {
     render() {
         const { handleSubmit } = this.props;
         return(
             <form onSubmit={ handleSubmit }>
-                <div>
-                    <label>Name</label>
-                    <Field 
-                        name="name" 
-                        component="input" 
-                        type="text" 
-                    />
-                </div>
-                <div>
-                    <label>Preferred formatting</label>
-                    <Field name="preference" component="select">
-                        <option />
-                        <option value="tabs">Tabs</option>
-                        <option value="spaces">Spaces</option>
-                    </Field>
-                </div>
-                <div>
-                    <label>Sign to newspaper</label>
-                    <Field 
-                        name="newsletter" 
-                        component="input" 
-                        type="checkbox"
-                    />
-                </div>
+                <Field
+                    name="firstname"
+                    component={customInput}
+                    type="text"
+                    label="First Name"
+                />
+                <Field
+                    name="surname"
+                    component={customInput}
+                    type="text"
+                    label="Surname"
+                />
+                <Field
+                    name="username"
+                    component={customInput}
+                    type="text"
+                    label="Username"
+                />
+                <Field
+                    name="preference"
+                    component={customSelect}
+                    label="Preferred Formatting"
+                />  
+                <Field 
+                    name="newsletter" 
+                    component={customInput} 
+                    type="checkbox"
+                    label="Sign to newspaper"
+                />
                 <button type="submit">Submit</button>
             </form>
         )
