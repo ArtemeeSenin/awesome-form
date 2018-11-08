@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import RegisterForm from './components/RegisterForm'
+import { SubmissionError } from 'redux-form'
 
 class App extends Component {
   submit = values => {
-    console.log(JSON.stringify(values, null, 4));
+    const takenLogins = ['kent', 'andy', 'john', 'joel']; // Must come from API
+    if(takenLogins.includes(values.username)){
+      throw new SubmissionError({
+        username: 'Wrong Username'
+      })
+    } else {
+      alert(JSON.stringify(values, null, 4));
+    }
   }
   getInitialValues() {
     return {
